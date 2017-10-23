@@ -6,6 +6,31 @@ import './scss/base.scss'
 import cvLink from './downloads/stewart_duffy_cv.pdf' // Tell Webpack this JS file uses this image
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      jobs: []
+    }
+  }
+
+  componentDidMount() {
+    const url = [
+      // Length issue
+      `https://gist.githubusercontent.com`,
+      `/stewartduffy/1b0a9759dfba523807514af7d11df6ca`,
+      `/raw/stewartduffy-data.json`
+    ].join('')
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          jobs: data.jobs
+        })
+      })
+  }
+
   render() {
     return (
       <div>
@@ -122,58 +147,15 @@ class App extends Component {
               <div className="col-md-11">
                 <h3>Work History</h3>
                 <ul className="list-unstyled">
-                  <li>
-                    <a href="https://www.wherescape.com/">WhereScape</a> /
-                    Auckland, NZ<br />
-                    <small>September 2016 – Present</small>
-                  </li>
-                  <li>
-                    <a href="https://www.mighway.com/">Mighway</a> / Auckland,
-                    NZ<br />
-                    <small>September 2015 – August 2016</small>
-                  </li>
-                  <li>
-                    <a href="http://www.sparkventures.co.nz/">
-                      Spark Ventures
-                    </a>{' '}
-                    / Auckland, NZ<br />
-                    <small>March 2015 – September 2015</small>
-                  </li>
-                  <li>
-                    <a href="http://www.elgin.org.uk">ELGIN</a> / London, UK<br />
-                    <small>Jul 2012 – March 2015</small>
-                  </li>
-                  <li>
-                    <a href="http://brandwidthgroup.com">Brandwidth</a> /
-                    Windsor, UK<br />
-                    <small>June 2012 – July 2012</small>
-                  </li>
-                  <li>
-                    <a href="http://www.isobar.com/uk/home">Isobar Mobile</a> /
-                    London, UK<br />
-                    <small>March 2012 – June 2012</small>
-                  </li>
-                  <li>
-                    <a href="http://www.borndigital.co.nz/">Born Digital</a> /
-                    Auckland, NZ<br />
-                    <small>September 2011 – January 2012</small>
-                  </li>
-                  <li>
-                    <a href="http://www.andsomeideas.com/">&amp;some</a> /
-                    Auckland, NZ<br />
-                    <small>November 2010 – September 2011</small>
-                  </li>
-                  <li>
-                    <a href="http://mediadesignschool.com/">
-                      Media Design School
-                    </a>{' '}
-                    / Auckland, NZ<br />
-                    <small>April 2010 – November 2010</small>
-                  </li>
-                  <li className="last">
-                    Jagged Media Ltd / Auckland, NZ<br />
-                    <small>June 2009 – November 2010</small>
-                  </li>
+                  {this.state.jobs.map((job, index) => (
+                    <li>
+                      <a href={job.link}>{job.name}</a> / {job.city}
+                      <br />
+                      <small>
+                        {job.startDate} – {job.endDate}
+                      </small>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
