@@ -66,12 +66,12 @@ class App extends Component {
               <nav className="pull-right hidden-xs">
                 <a className="nav-item active" href="/">
                   about
-                </a>{' '}
-                /
+                </a>
+                <span> / </span>
                 <a className="nav-item" href="#contact">
                   contact
-                </a>{' '}
-                /
+                </a>
+                <span> / </span>
                 <a className="nav-item" href={cvLink}>
                   cv
                 </a>
