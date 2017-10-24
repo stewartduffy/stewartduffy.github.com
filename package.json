@@ -4,17 +4,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "gh-pages": "^1.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-snapshot": "^1.2.0"
   },
   "devDependencies": {
-    "custom-react-scripts": "0.2.1"
+    "custom-react-scripts": "0.2.1",
+    "git-directory-deploy": "^1.5.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build && git-directory-deploy --directory build --branch master",
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
     "test": "react-scripts test --env=jsdom",

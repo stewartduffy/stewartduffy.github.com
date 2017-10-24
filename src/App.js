@@ -36,7 +36,7 @@ class App extends Component {
       <div>
         <div className="header">
           <h1 className="heading-logo text-hide">
-            Stewart Duffy / Front-End Developer..
+            Stewart Duffy / Front-End Developer
           </h1>
           <div className="nav-container clearfix">
             <div className="container">
