@@ -163,7 +163,7 @@ class App extends Component {
               <div className="col-md-1 hidden-sm hidden-xs">
                 <i className="main-icon fa fa-phone" />
               </div>
-              <div className="col-md-11">
+              <div id="cta-contact" className="col-md-11">
                 <h3 id="contact">Let’s talk</h3>
                 {/*<p>I am currently looking for something new, so if you think that’s you then call 027 383 3901 or <a href="mailto:duffy.stewart@gmail.com">email me</a> at duffy.stewart@gmail.com.</p>*/}
                 <p>
